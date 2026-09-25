@@ -133,7 +133,7 @@ describe('website smoke test', () => {
     // line both read the item's project name from `manifest.projects` now
     // (`useProjects().label()`), not a legacy project-code badge — items[0]
     // is carpets' own "Discover Carpet Art" project (carpets-data 1.0.9).
-    // inventory-app#1728: `.source-reference` is `RecordSheetView`'s own
+    // inventory-app#1728: `.source-reference` is `ItemDetailView`'s own
     // `.mwnf-sheet-source` block now, built from the family data layer's
     // `itemSheet.sourceDatabase` spec key rather than local markup.
     expect(host.querySelector('.mwnf-sheet-source').textContent).toContain("Sharing History - Arab-Ottoman-European relations in the 19th century.")
@@ -148,7 +148,7 @@ describe('website smoke test', () => {
   it('colours and names the source-database chip from the manifest projects section', async () => {
     const { app, host } = await mountSite('#/item/97d73f3c-2c54-52b7-ad17-cfda861be46b')
     await vi.waitFor(() => expect(host.querySelector('.mwnf-sheet-source .mwnf-chip')).not.toBeNull(), { timeout: 20000 })
-    // inventory-app#1728: `RecordSheetView`'s own `.mwnf-sheet-source__line`
+    // inventory-app#1728: `ItemDetailView`'s own `.mwnf-sheet-source__line`
     // renders the chip as a decorative, `aria-hidden` colour dot beside the
     // text — the project name is the line's own text now, not the chip
     // span's, unlike the local markup this replaces.
@@ -163,7 +163,7 @@ describe('website smoke test', () => {
   // list of project ids, not a literal legacy project-code check — it
   // must show for that project's own records and stay off everyone else's.
   // inventory-app#1728: `.links-container`/`.info-eiac` are
-  // `RecordSheetView`'s own `.mwnf-sheet-source`/`.mwnf-sheet-notice` now.
+  // `ItemDetailView`'s own `.mwnf-sheet-source`/`.mwnf-sheet-notice` now.
   it('renders the related-database and artistic-introduction links from the manifest', async () => {
     const [items] = await loadEntities(['items'])
     const item = items.find((i) => i.id === '97d73f3c-2c54-52b7-ad17-cfda861be46b')
