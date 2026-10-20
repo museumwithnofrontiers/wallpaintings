@@ -16,6 +16,15 @@ export const projectColors = {
 // The projects whose item sheets still carry legacy's Explore-partner notice.
 export const noticeProjects = []
 
+// This website's own chrome files (inventory-app#2233, D7): the logo, the
+// banners, the sibling-gallery tiles and the backgrounds, imported from the
+// legacy site into theme/assets/. A picture the package names by its legacy
+// path is the file at theme/assets/chrome/<that path>; the layout resolves
+// each through this map (@museumwnf/viewer-layout, "Site chrome").
+const chrome = import.meta.glob('../theme/assets/**/*.{jpg,jpeg,png,gif,svg}', {
+  eager: true, query: '?url', import: 'default',
+})
+
 export default galleryConfig({
   // The dataset package this website renders. Must match the alias in
   // vite.config.js and the dependency in package.json.
@@ -35,4 +44,7 @@ export default galleryConfig({
 
   // The credits page's body.
   creditsBody: 'wallpaintings.credits.body',
+
+  // This website's own chrome files, above.
+  chrome,
 })
